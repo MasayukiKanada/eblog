@@ -32,24 +32,30 @@
                                   <label for="thumnail" class="leading-7 text-sm text-gray-600">画像</label>
                                 </div>
                               </div>
-                              <div class="flex">
-                                <div class="p-2 w-1/2">
+                              <div class="flex items-center">
+                                <div class="p-2 sm:w-1/2 w-full">
                                     <div class="relative">
-                                        <label for="for_user" class="leading-7 text-sm text-gray-600">会員限定</label>
-                                            <input type="text" id="for_user" name="for_user" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        <label for="for_user" class="leading-7 text-sm text-gray-600 mr-2">会員限定</label>
+                                        <select name="for_user" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-5 px-5 leading-6 transition-colors duration-200 ease-in-out w-full">
+                                            <option selected value="false">限定にしない</option>
+                                            <option value="true">限定にする</option>
+                                        </select>
                                         </div>
                                     </div>
-                                    <div class="p-2 w-1/2">
+                                    <div class="p-2 sm:w-1/2 w-full">
                                         <div class="relative">
-                                            <label for="is_visible" class="leading-7 text-sm text-gray-600">表示切替</label>
-                                                <input type="text" id="is_visible" name="is_visible" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <label for="is_visible" class="leading-7 text-sm text-gray-600 mr-2">表示切替</label>
+                                            <select name="is_visible" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-5 px-5 leading-6 transition-colors duration-200 ease-in-out w-full">
+                                                <option selected value="false">表示する</option>
+                                                <option value="true">表示しない</option>
+                                            </select>
                                         </div>
                                     </div>
                               </div>
                                 <div class="p-2 w-full">
                                     <div class="relative">
                                     <label for="posted_at" class="leading-7 text-sm text-gray-600">投稿日時</label>
-                                    <input type="text" id="posted_at" name="posted_at" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="datetime-local" id="posted_at" name="posted_at" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     </div>
                                 </div>
                                 <div class="p-2 w-full flex justify-around mt-4">
