@@ -23,6 +23,7 @@ class PostSeeder extends Seeder
                 'thumnail' => '',
                 'for_user' => false,
                 'is_visible' => true,
+                'posted_at' => '2024-04-22 11:11:11'
             ],
             [
                 'admin_id' => 1,
@@ -31,6 +32,7 @@ class PostSeeder extends Seeder
                 'thumnail' => '',
                 'for_user' => false,
                 'is_visible' => true,
+                'posted_at' => '2024-04-23 11:11:11'
             ],
             [
                 'admin_id' => 1,
@@ -39,6 +41,7 @@ class PostSeeder extends Seeder
                 'thumnail' => '',
                 'for_user' => true,
                 'is_visible' => true,
+                'posted_at' => '2024-04-24 11:11:11'
             ],
         ]);
     }

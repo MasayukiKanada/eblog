@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('thumnail')->nullable();
             $table->boolean('for_user');
             $table->boolean('is_visible');
+            $table->dateTime('posted_at');
             $table->timestamps();
         });
     }
