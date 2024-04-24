@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use InterventionImage;
 
 class PostsController extends Controller
 {
@@ -102,7 +103,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $imageFile = $request->thumnail;
+        if(!is_null($imageFile) && $imageFile->isValid())
+        {
+            $filename = uniqid(rand().'_');
+            $extension = $imageFile->extension();
+            $filenameToStore = $filename . '.' . $extension;
+            $resizedImage = InterventionImage::make($imageFile)->resize(1280, 853)->encode();
+
+            Storage::put('public/posts/' . $filenameToStore, $resizedImage);
+
+            return redirect()->route('admin.posts.index');
+        }
     }
 
     /**

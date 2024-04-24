@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="p-2 w-full flex justify-around mt-4">
                                         <button type="button" onclick="location.href='{{ route('admin.posts.index') }}'" class="flex mx-auto text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg">戻る</button>
-                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">投稿する</button>
+                                        <button type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">投稿する</button>
                                     </div>
                                 </div>
                             </form>
