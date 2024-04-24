@@ -13,6 +13,7 @@ class Post extends Model
         'admin_id',
         'header',
         'body',
+        // 'thumnail',
         'for_user',
         'is_visible',
         'posted_at',

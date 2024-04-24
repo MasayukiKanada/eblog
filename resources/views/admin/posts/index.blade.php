@@ -10,16 +10,23 @@
 
     <div class="py-12">
 
+        <x-flash-message status="info" />
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($posts as $post)
             <div class="bg-white overflow-hidden shadow-md sm:rounded-lg mb-8">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <section class="text-gray-600 body-font">
-                        @if($post->is_visible)
-                            <span class="p-2 rounded-md bg-blue-400 text-white">表示中</span>
-                        @else
-                            <span class="border p-2 rounded-md bg-red-400 text-white">非表示</span>
-                        @endif
+                        <div class="flex">
+                            @if($post->is_visible)
+                                <span class="p-2 rounded-md bg-blue-400 text-white">表示中</span>
+                            @else
+                                <span class="p-2 rounded-md bg-red-400 text-white">非表示</span>
+                            @endif
+                            @if($post->for_user)
+                                <span class="ml-3 p-2 rounded-md bg-yellow-600 text-white">会員限定</span>
+                            @endif
+                        </div>
                         <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
                             <div class="md:w-1/3 w-5/6 mb-10 md:mb-0">
                                 @if(empty($post->thumnail))
@@ -31,7 +38,7 @@
                             <div class="md:w-2/3 lg:pl-24 md:pl-16">
                                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $post->header }}
                                 </h1>
-                                <p class="mb-8 leading-relaxed">{{ $post->body }}</p>
+                                <p class="body mb-8 leading-relaxed relative" style="white-space:pre-wrap;">{{ $post->body }}</p>
                                 <div class="flex justify-end">
                                     <button type="button" onclick="location.href='{{ route('admin.posts.edit', ['post' => $post->id]) }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
                                 </div>

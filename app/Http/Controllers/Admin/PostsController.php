@@ -64,7 +64,9 @@ class PostsController extends Controller
             'posted_at' => $request->posted_at,
         ]);
 
-        return redirect()->route('admin.posts.index');
+        return redirect()
+        ->route('admin.posts.index')
+        ->with('message', '投稿が完了しました。');
     }
 
     /**

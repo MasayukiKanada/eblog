@@ -49,8 +49,8 @@
                                             <div class="relative">
                                                 <label for="is_visible" class="leading-7 text-sm text-gray-600 mr-2">表示切替</label>
                                                 <select name="is_visible" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-5 px-5 leading-6 transition-colors duration-200 ease-in-out w-full">
-                                                    <option selected value="0">表示する</option>
-                                                    <option value="1">表示しない</option>
+                                                    <option selected value="1">表示する</option>
+                                                    <option value="0">表示しない</option>
                                                 </select>
                                             </div>
                                         </div>
