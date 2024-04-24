@@ -9,6 +9,15 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'admin_id',
+        'header',
+        'body',
+        'for_user',
+        'is_visible',
+        'posted_at',
+    ];
+
     public function admin()
     {
         return $this->belongsTo(Admin::class);
