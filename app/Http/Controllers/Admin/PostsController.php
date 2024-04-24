@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -20,7 +22,9 @@ class PostsController extends Controller
 
     public function index()
     {
-        dd('投稿一覧');
+        $posts = Post::all();
+
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -30,7 +34,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
