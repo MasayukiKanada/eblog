@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class PostsController extends Controller
@@ -22,7 +23,8 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $adminId = Auth::id();
+        $posts = Post::where('admin_id', $adminId)->get();
 
         return view('admin.posts.index', compact('posts'));
     }
