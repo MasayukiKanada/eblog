@@ -28,12 +28,12 @@
                                     <img src="{{ asset('storage/posts/' . $post->thumnail) }}" alt="アイキャッチ画像">
                                 @endif
                             </div>
-                            <div class="md:w-2/3 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                            <div class="md:w-2/3 lg:pl-24 md:pl-16">
                                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $post->header }}
                                 </h1>
                                 <p class="mb-8 leading-relaxed">{{ $post->body }}</p>
                                 <div class="flex justify-end">
-                                {{-- <button type="button" onclick="location.href='{{ route('admin.posts.edit', ['posts' => $post->id]) }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button> --}}
+                                    <button type="button" onclick="location.href='{{ route('admin.posts.edit', ['post' => $post->id]) }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
                                 </div>
                             </div>
                         </div>
