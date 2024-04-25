@@ -10,7 +10,7 @@
 
     <div class="py-12">
 
-        <x-flash-message status="info" />
+        <x-flash-message status="session('status')" />
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($posts as $post)

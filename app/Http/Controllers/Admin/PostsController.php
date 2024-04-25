@@ -75,18 +75,8 @@ class PostsController extends Controller
 
         return redirect()
         ->route('admin.posts.index')
-        ->with('message', '投稿が完了しました。');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        ->with(['message' => '投稿が完了しました。',
+        'status' => 'info']);
     }
 
     /**
@@ -111,13 +101,34 @@ class PostsController extends Controller
      */
     public function update(UploadImageRequest $request, $id)
     {
+        $request->validate([
+            'header' => ['required'],
+            'body' => ['required'],
+            'for_user' => ['required'],
+            'is_visible' => ['required'],
+            'posted_at' => ['required'],
+        ]);
+
         $imageFile = $request->thumnail;
         if(!is_null($imageFile) && $imageFile->isValid())
         {
             $fileNameToStore = ImageService::upload($imageFile, 'posts');
         }
 
-        return redirect()->route('admin.posts.index');
+        $post = Post::findOrFail($id);
+        $post->header = $request->header;
+        $post->body = $request->body;
+        $post->thumnail = $fileNameToStore;
+        $post->for_user = $request->for_user;
+        $post->is_visible = $request->is_visible;
+        $post->posted_at = $request->posted_at;
+
+        $post->save();
+
+        return redirect()
+        ->route('admin.posts.index')
+        ->with(['message' => '投稿内容を更新しました。',
+        'status' => 'info']);
     }
 
     /**
