@@ -9,9 +9,9 @@ class ImageService
 {
     public static function upload($imageFile, $folderName)
     {
-        $filename = uniqid(rand().'_');
+        $fileName = uniqid(rand().'_');
         $extension = $imageFile->extension();
-        $fileNameToStore = $filename . '.' . $extension;
+        $fileNameToStore = $fileName. '.' . $extension;
         $resizedImage = InterventionImage::make($imageFile)->resize(1280, 853)->encode();
         Storage::put('public/' . $folderName .'/' . $fileNameToStore, $resizedImage);
 

@@ -29,10 +29,10 @@
                         </div>
                         <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
                             <div class="md:w-1/3 w-5/6 mb-10 md:mb-0">
-                                @if(empty($post->thumnail))
-                                    <img src="{{ asset('images/no_image.jpg') }}" alt="no image">
-                                @else
+                                @if(!empty($post->thumnail))
                                     <img src="{{ asset('storage/posts/' . $post->thumnail) }}" alt="アイキャッチ画像">
+                                @else
+                                    <img src="{{ asset('images/no_image.jpg') }}" alt="no image">
                                 @endif
                             </div>
                             <div class="md:w-2/3 lg:pl-24 md:pl-16">

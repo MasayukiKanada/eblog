@@ -47,7 +47,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UploadImageRequest $request)
     {
         $request->validate([
             'header' => ['required'],
@@ -57,11 +57,17 @@ class PostsController extends Controller
             'posted_at' => ['required'],
         ]);
 
+        $imageFile = $request->thumnail;
+        if(!is_null($imageFile))
+        {
+            $fileNameToStore = ImageService::upload($imageFile, 'posts');
+        }
+
         Post::create([
             'admin_id' => Auth::id(),
             'header' => $request->header,
             'body' => $request->body,
-            // 'thumnail' => $request->thumnail,
+            'thumnail' => $fileNameToStore,
             'for_user' => $request->for_user,
             'is_visible' => $request->is_visible,
             'posted_at' => $request->posted_at,
