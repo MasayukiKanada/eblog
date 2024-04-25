@@ -64,6 +64,7 @@
                 </div>
             </div>
             @endforeach
+            {{ $trashedPosts->links() }}
             @endif
         </div>
     </div>

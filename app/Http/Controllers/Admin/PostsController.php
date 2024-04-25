@@ -26,8 +26,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::where('admin_id', Auth::id())->get();
-        $posts = $posts->sortByDesc('posted_at');
+        $posts = Post::where('admin_id', Auth::id())->orderBy('posted_at', 'desc')->paginate(10);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -150,7 +149,7 @@ class PostsController extends Controller
 
     public function trashedPostsIndex()
     {
-        $trashedPosts = Post::onlyTrashed()->get();
+        $trashedPosts = Post::onlyTrashed()->orderBy('posted_at', 'desc')->paginate(10);
         $trashedPosts = $trashedPosts->sortByDesc('posted_at');
         return view('admin.trashed-posts.index', compact('trashedPosts'));
     }
