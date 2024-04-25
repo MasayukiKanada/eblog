@@ -29,6 +29,14 @@ Route::get('/', function () {
 Route::resource('posts', PostsController::class)
 ->middleware('auth:admin');
 
+Route::prefix('trashed-posts')
+->middleware('auth:admin')
+->group(function() {
+    Route::get('index', [PostsController::class, 'trashedPostsIndex'])->name('trashed-posts.index');
+    Route::post('restore/{post}', [PostsController::class, 'trashedPostsRestore'])->name('trashed-posts.restore');
+    Route::post('destroy/{post}', [PostsController::class, 'trashedPostsDestroy'])->name('trashed-posts.destroy');
+});
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin'])->name('dashboard');

@@ -20,6 +20,9 @@
                     <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
                         投稿一覧
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.trashed-posts.index')" :active="request()->routeIs('admin.trashed-posts.index')">
+                        ゴミ箱
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -71,6 +74,12 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
+               投稿一覧
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.trashed-posts.index')" :active="request()->routeIs('admin.trashed-posts.index')">
+                ゴミ箱
+             </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

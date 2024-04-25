@@ -1,11 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                投稿一覧
-            </h2>
-            <button type="button" onclick="location.href='{{ route('admin.posts.create') }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規投稿</button>
-        </div>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            ゴミ箱
+        </h2>
     </x-slot>
 
     <div class="py-12">
@@ -13,7 +10,14 @@
         <x-flash-message status="session('status')" />
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @foreach ($posts as $post)
+            @if($trashedPosts->isEmpty())
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg mb-8">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <p class="text-gray-600">ゴミ箱は空です。</p>
+                </div>
+            </div>
+            @else
+            @foreach ($trashedPosts as $post)
             <div class="bg-white overflow-hidden shadow-md sm:rounded-lg mb-8">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <section class="text-gray-600 body-font">
@@ -40,8 +44,19 @@
                                 </h1>
                                 <p class="mb-3 text-gray-400 text-sm">{{ \Carbon\Carbon::parse($post->posted_at)->format('Y年m月d日') }}</p>
                                 <p class="body mb-8 leading-relaxed relative" style="white-space:pre-wrap;">{{ $post->body }}</p>
-                                <div class="flex justify-end">
-                                    <button type="button" onclick="location.href='{{ route('admin.posts.edit', ['post' => $post->id]) }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
+                                <div class="flex justify-around">
+                                    <form id="restore_{{$post->id}}" method="post"
+                                        action="{{ route('admin.trashed-posts.restore', ['post' =>
+                                        $post->id])}}">
+                                        @csrf
+                                        <a href="#" data-id="{{ $post->id }}" onclick="restorePost(this)" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg text-center block w-40 mx-auto">復元する</a>
+                                    </form>
+                                    <form id="delete_{{$post->id}}" method="post"
+                                        action="{{ route('admin.trashed-posts.destroy', ['post' =>
+                                        $post->id])}}">
+                                        @csrf
+                                        <a href="#" data-id="{{ $post->id }}" onclick="deletePost(this)" class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg text-center block w-40 mx-auto">完全に削除</a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -49,6 +64,21 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
     </div>
+    <script>
+        function restorePost(e) {
+            'use strict';
+            if (confirm('復元しますか?')) {
+            document.getElementById('restore_' + e.dataset.id).submit();
+            }
+        }
+        function deletePost(e) {
+            'use strict';
+            if (confirm('本当に削除してもいいですか?')) {
+            document.getElementById('delete_' + e.dataset.id).submit();
+            }
+        }
+    </script>
 </x-app-layout>

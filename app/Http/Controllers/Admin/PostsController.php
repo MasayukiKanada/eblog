@@ -27,6 +27,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::where('admin_id', Auth::id())->get();
+        $posts = $posts->sortByDesc('posted_at');
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -139,6 +140,34 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        return redirect()
+        ->route('admin.posts.index')
+        ->with(['message' => '投稿を削除しました。',
+        'status' => 'alert']);
+    }
+
+    public function trashedPostsIndex()
+    {
+        $trashedPosts = Post::onlyTrashed()->get();
+        $trashedPosts = $trashedPosts->sortByDesc('posted_at');
+        return view('admin.trashed-posts.index', compact('trashedPosts'));
+    }
+
+    public function trashedPostsRestore($id)
+    {
+        Post::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->route('admin.trashed-posts.index')
+        ->with(['message' => '投稿を復元しました。',
+        'status' => 'info']);
+    }
+
+    public function trashedPostsDestroy($id)
+    {
+        Post::onlyTrashed()->findOrFail($id)->forceDelete();
+        return redirect()->route('admin.trashed-posts.index')
+        ->with(['message' => '投稿を完全に削除しました。',
+        'status' => 'alert']);
     }
 }
