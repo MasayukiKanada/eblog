@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 use App\Http\Requests\UploadImageRequest;
+use App\Services\ImageService;
 
 class PostsController extends Controller
 {
@@ -107,15 +108,10 @@ class PostsController extends Controller
         $imageFile = $request->thumnail;
         if(!is_null($imageFile) && $imageFile->isValid())
         {
-            $filename = uniqid(rand().'_');
-            $extension = $imageFile->extension();
-            $filenameToStore = $filename . '.' . $extension;
-            $resizedImage = InterventionImage::make($imageFile)->resize(1280, 853)->encode();
-
-            Storage::put('public/posts/' . $filenameToStore, $resizedImage);
-
-            return redirect()->route('admin.posts.index');
+            $fileNameToStore = ImageService::upload($imageFile, 'posts');
         }
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
