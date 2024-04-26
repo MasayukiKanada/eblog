@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
+// Route::get('/', function () {
+//     return view('user.welcome');
+// });
+
+Route::prefix('posts')
+->group(function() {
+    Route::get('index', [PostsController::class, 'postsIndex'])->name('posts.index');
+    Route::get('show/{show}', [PostsController::class, 'postsShow'])->name('posts.show');
 });
 
 Route::get('/dashboard', function () {
