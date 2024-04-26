@@ -27,11 +27,29 @@ class Post extends Model
 
     public function scopeSortOrder ($query, $sortOrder)
     {
+        if($sortOrder === null) {
+            return $query->orderBy('posts.posted_at', 'desc') ;
+         }
         if($sortOrder === \Constant::SORT_ORDER['later']){
             return $query->orderBy('posts.posted_at', 'desc') ;
         }
         if($sortOrder === \Constant::SORT_ORDER['older']){
             return $query->orderBy('posts.posted_at', 'asc') ;
+        }
+    }
+
+    public function scopeSearchKeyword($query, $keyword)
+    {
+        if(!is_null($keyword))
+        {
+            $spaceConvert = mb_convert_kana($keyword,'s');
+            $keywords = preg_split('/[\s]+/', $spaceConvert,-1,PREG_SPLIT_NO_EMPTY);
+            foreach($keywords as $word)
+            {
+                $query->where('posts.body','like','%'.$word.'%');
+            }
+        } else {
+            return;
         }
     }
 }

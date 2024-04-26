@@ -27,8 +27,9 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $posts = Post::where('admin_id', Auth::id())
+        ->searchKeyword($request->keyword)
         ->sortOrder($request->sort)
-        ->paginate($request->pagination);
+        ->paginate($request->pagination ?? '10');
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -149,9 +150,12 @@ class PostsController extends Controller
         'status' => 'alert']);
     }
 
-    public function trashedPostsIndex()
+    public function trashedPostsIndex(Request $request)
     {
-        $trashedPosts = Post::onlyTrashed()->orderBy('posted_at', 'desc')->paginate(10);
+        $trashedPosts = Post::onlyTrashed()
+        ->searchKeyword($request->keyword)
+        ->sortOrder($request->sort)
+        ->paginate($request->pagination ?? '10');
         $trashedPosts = $trashedPosts->sortByDesc('posted_at');
         return view('admin.trashed-posts.index', compact('trashedPosts'));
     }
