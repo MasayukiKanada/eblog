@@ -24,4 +24,14 @@ class Post extends Model
     {
         return $this->belongsTo(Admin::class);
     }
+
+    public function scopeSortOrder ($query, $sortOrder)
+    {
+        if($sortOrder === \Constant::SORT_ORDER['later']){
+            return $query->orderBy('posts.posted_at', 'desc') ;
+        }
+        if($sortOrder === \Constant::SORT_ORDER['older']){
+            return $query->orderBy('posts.posted_at', 'asc') ;
+        }
+    }
 }

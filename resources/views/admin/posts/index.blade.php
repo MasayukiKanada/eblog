@@ -4,7 +4,31 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 投稿一覧
             </h2>
-            <button type="button" onclick="location.href='{{ route('admin.posts.create') }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規投稿</button>
+            <div class="flex justify-between items-center">
+                <div>
+                    <form method="get" action="{{ route('admin.posts.index') }}">
+                        <div class="flex">
+                            <div class="flex items-center mr-5">
+                                <p class="text-sm mr-2">表示順</p>
+                                <select id="sort" name="sort" class="mr-4">
+                                    <option value="{{ \Constant::SORT_ORDER['older']}}"
+                                        @if(\Request::get('sort') === \Constant::SORT_ORDER['older'] )
+                                        selected
+                                        @endif>古い順
+                                    </option>
+                                    <option value="{{ \Constant::SORT_ORDER['later']}}"
+                                        @if(\Request::get('sort') === \Constant::SORT_ORDER['later'] )
+                                        selected
+                                        @endif>新しい順
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="flex items-center mr-3">表示件数</div>
+                        </div>
+                    </form>
+                </div>
+                <button type="button" onclick="location.href='{{ route('admin.posts.create') }}'" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg text-center ml-3">新規投稿</button>
+            </div>
         </div>
     </x-slot>
 
@@ -52,4 +76,10 @@
             {{ $posts->links() }}
         </div>
     </div>
+    <script>
+        const select = document.getElementById('sort');
+        select.addEventListener('change', function(){
+            this.form.submit();
+        })
+    </script>
 </x-app-layout>

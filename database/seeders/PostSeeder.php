@@ -48,7 +48,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト4',
                 'body' => 'テスト4の投稿です。テスト4の投稿です。テスト4の投稿です。',
                 'thumnail' => '4.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-04-25 11:11:11'
             ],
@@ -57,7 +57,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト5',
                 'body' => 'テスト5の投稿です。テスト5の投稿です。テスト5の投稿です。',
                 'thumnail' => '5.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-04-26 11:11:11'
             ],
@@ -66,7 +66,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト6',
                 'body' => 'テスト6の投稿です。テスト6の投稿です。テスト6の投稿です。',
                 'thumnail' => '6.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-04-27 11:11:11'
             ],
@@ -84,7 +84,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト8',
                 'body' => 'テスト8の投稿です。テスト8の投稿です。テスト8の投稿です。',
                 'thumnail' => '8.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-04-29 11:11:11'
             ],
@@ -93,7 +93,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト9',
                 'body' => 'テスト9の投稿です。テスト9の投稿です。テスト9の投稿です。',
                 'thumnail' => '9.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-04-30 11:11:11'
             ],
@@ -102,7 +102,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト10',
                 'body' => 'テスト10の投稿です。テスト10の投稿です。テスト10の投稿です。',
                 'thumnail' => '10.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-05-01 11:11:11'
             ],
@@ -129,7 +129,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト13',
                 'body' => 'テスト13の投稿です。テスト13の投稿です。テスト13の投稿です。',
                 'thumnail' => '3.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-05-24 11:11:11'
             ],
@@ -138,7 +138,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト14',
                 'body' => 'テスト14の投稿です。テスト14の投稿です。テスト14の投稿です。',
                 'thumnail' => '4.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-05-25 11:11:11'
             ],
@@ -156,7 +156,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト16',
                 'body' => 'テスト16の投稿です。テスト16の投稿です。テスト16の投稿です。',
                 'thumnail' => '6.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-05-27 11:11:11'
             ],
@@ -165,7 +165,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト17',
                 'body' => 'テスト17の投稿です。テスト17の投稿です。テスト17の投稿です。',
                 'thumnail' => '7.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-05-28 11:11:11'
             ],
@@ -174,7 +174,7 @@ class PostSeeder extends Seeder
                 'header' => 'テスト18',
                 'body' => 'テスト18の投稿です。テスト18の投稿です。テスト18の投稿です。',
                 'thumnail' => '8.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-05-29 11:11:11'
             ],
@@ -192,9 +192,18 @@ class PostSeeder extends Seeder
                 'header' => 'テスト20',
                 'body' => 'テスト20の投稿です。テスト20の投稿です。テスト20の投稿です。',
                 'thumnail' => '10.jpg',
-                'for_user' => true,
+                'for_user' => false,
                 'is_visible' => true,
                 'posted_at' => '2024-06-01 11:11:11'
+            ],
+            [
+                'admin_id' => 1,
+                'header' => 'テスト0',
+                'body' => 'テスト0の投稿です。テスト0の投稿です。テスト0の投稿です。',
+                'thumnail' => '1.jpg',
+                'for_user' => false,
+                'is_visible' => false,
+                'posted_at' => '2024-06-02 11:11:11'
             ],
         ]);
     }

@@ -24,9 +24,11 @@ class PostsController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::where('admin_id', Auth::id())->orderBy('posted_at', 'desc')->paginate(10);
+        $posts = Post::where('admin_id', Auth::id())
+        ->sortOrder($request->sort)
+        ->paginate(10);
 
         return view('admin.posts.index', compact('posts'));
     }
