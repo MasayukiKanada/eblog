@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +18,9 @@ use App\Http\Controllers\Admin\PostsController;
 //     return view('user.welcome');
 // });
 
-Route::prefix('posts')
-->group(function() {
-    Route::get('index', [PostsController::class, 'postsIndex'])->name('posts.index');
-    Route::get('show/{show}', [PostsController::class, 'postsShow'])->name('posts.show');
+Route::prefix('')->group(function() {
+    Route::get('/', [PostsController::class, 'index'])->name('posts.index');
+    Route::get('show/{show}', [PostsController::class, 'show'])->name('posts.show');
 });
 
 Route::get('/dashboard', function () {
