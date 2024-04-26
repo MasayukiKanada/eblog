@@ -28,7 +28,7 @@ class PostsController extends Controller
     {
         $posts = Post::where('admin_id', Auth::id())
         ->sortOrder($request->sort)
-        ->paginate(10);
+        ->paginate($request->pagination);
 
         return view('admin.posts.index', compact('posts'));
     }

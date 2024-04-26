@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="md:flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight md:mb-0 mb-3">
                 投稿一覧
             </h2>
-            <div class="flex justify-between items-center">
-                <div>
+            <div class="sm:flex justify-between items-center">
+                <div class="sm:mb-0 mb-5">
                     <form method="get" action="{{ route('admin.posts.index') }}">
                         <div class="flex">
-                            <div class="flex items-center mr-5">
+                            <div class="flex items-center mr-2">
                                 <p class="text-sm mr-2">表示順</p>
-                                <select id="sort" name="sort" class="mr-4">
+                                <select id="sort" name="sort" class="mr-3 rounded-sm border-gray-300">
                                     <option value="{{ \Constant::SORT_ORDER['older']}}"
                                         @if(\Request::get('sort') === \Constant::SORT_ORDER['older'] )
                                         selected
@@ -23,7 +23,26 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="flex items-center mr-3">表示件数</div>
+                            <div class="flex items-center mr-3">
+                                <p class="text-sm mr-2">表示順</p>
+                                <select name="pagination" id="pagination" class="rounded-sm border-gray-300">
+                                    <option value="10"
+                                    @if(\Request::get('pagination') === '10')
+                                    selected
+                                    @endif>10件
+                                </option>
+                                <option value="20"
+                                    @if(\Request::get('pagination') === '20')
+                                    selected
+                                    @endif>20件
+                                </option>
+                                <option value="50"
+                                    @if(\Request::get('pagination') === '50')
+                                    selected
+                                    @endif>50件
+                                </option>
+                                </select>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -73,13 +92,20 @@
                 </div>
             </div>
             @endforeach
-            {{ $posts->links() }}
+            {{ $posts->appends([
+                'sort' => \Request::get('sort'),
+                'pagination' => \Request::get('pagination'),
+            ])->links() }}
         </div>
     </div>
     <script>
         const select = document.getElementById('sort');
         select.addEventListener('change', function(){
             this.form.submit();
-        })
+        });
+        const paginate = document.getElementById('pagination');
+        paginate.addEventListener('change', function(){
+            this.form.submit();
+        });
     </script>
 </x-app-layout>
