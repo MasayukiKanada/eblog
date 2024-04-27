@@ -27,6 +27,19 @@ class PostController extends Controller
         return view('user.posts.index', compact('posts'));
     }
 
+    public function limited(Request $request)
+    {
+        $posts = Post::where([
+            ['for_user', '=', '1'],
+            ['is_visible', '=', '1'],
+        ])
+        ->searchKeyword($request->keyword)
+        ->sortOrder($request->sort)
+        ->paginate($request->pagination ?? '10');
+
+        return view('user.posts.limited', compact('posts'));
+    }
+
     public function show($id)
     {
         $post = Post::findOrFail($id);

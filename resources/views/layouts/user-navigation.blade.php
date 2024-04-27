@@ -17,6 +17,9 @@
                     <x-nav-link :href="route('user.posts.index')" :active="request()->routeIs('user.posts.index')">
                         投稿一覧
                     </x-nav-link>
+                    <x-nav-link :href="route('user.posts.limited')" :active="request()->routeIs('user.posts.limited')">
+                        会員限定
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -67,6 +70,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('user.posts.index')" :active="request()->routeIs('user.posts.index')">
                 投稿一覧
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('user.posts.limited')" :active="request()->routeIs('user.posts.limited')">
+                会員限定
             </x-responsive-nav-link>
         </div>
 

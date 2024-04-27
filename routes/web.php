@@ -32,6 +32,7 @@ Route::prefix('user')
 ->middleware(['auth:users'])
 ->group(function() {
     Route::get('index', [PostController::class, 'index'])->name('posts.index');
+    Route::get('limited', [PostController::class, 'limited'])->name('posts.limited');
     Route::get('show/{post}', [PostController::class, 'show'])->name('posts.show');
 });
 
