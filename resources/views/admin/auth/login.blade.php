@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
-        投稿者用
+        管理者ログイン
         <x-slot name="logo">
             <div class="w-32">
                 <a href="/">

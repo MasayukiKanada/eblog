@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.welcome');
-});
+// Route::get('/', function () {
+//     return view('admin.welcome');
+// });
 
 Route::resource('posts', PostsController::class)
 ->middleware('auth:admin');
@@ -37,9 +37,9 @@ Route::prefix('trashed-posts')
     Route::post('destroy/{post}', [PostsController::class, 'trashedPostsDestroy'])->name('trashed-posts.destroy');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth:admin'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth:admin'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
