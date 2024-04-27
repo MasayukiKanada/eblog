@@ -11,16 +11,15 @@ class PostsController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::all();
-        // ->searchKeyword($request->keyword)
-        // ->sortOrder($request->sort)
-        // ->paginate($request->pagination ?? '10');
+        $posts = Post::searchKeyword($request->keyword)
+        ->sortOrder($request->sort)
+        ->paginate($request->pagination ?? '10');
 
-        return view('user.posts.index', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show($id)
     {
-
+        dd($id);
     }
 }

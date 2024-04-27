@@ -20,7 +20,7 @@ use App\Http\Controllers\PostsController;
 
 Route::prefix('')->group(function() {
     Route::get('/', [PostsController::class, 'index'])->name('posts.index');
-    Route::get('show/{show}', [PostsController::class, 'show'])->name('posts.show');
+    Route::get('show/{post}', [PostsController::class, 'show'])->name('posts.show');
 });
 
 Route::get('/dashboard', function () {
