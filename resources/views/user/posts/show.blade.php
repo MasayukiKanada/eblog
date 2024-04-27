@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-general-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             投稿詳細
@@ -48,4 +48,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-general-layout>

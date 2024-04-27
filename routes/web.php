@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\User\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,15 @@ Route::prefix('')->group(function() {
     Route::get('show/{post}', [PostsController::class, 'show'])->name('posts.show');
 });
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth:users'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('user.dashboard');
+// })->middleware(['auth:users'])->name('dashboard');
+
+Route::prefix('user')
+->middleware(['auth:users'])
+->group(function() {
+    Route::get('index', [PostController::class, 'index'])->name('posts.index');
+    Route::get('show/{post}', [PostController::class, 'show'])->name('posts.show');
+});
 
 require __DIR__.'/auth.php';
