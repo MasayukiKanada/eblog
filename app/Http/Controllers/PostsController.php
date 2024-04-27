@@ -11,7 +11,11 @@ class PostsController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::searchKeyword($request->keyword)
+        $posts = Post::where([
+            ['for_user', '=', '0' ],
+            ['is_visible', '=', '1'],
+        ])
+        ->searchKeyword($request->keyword)
         ->sortOrder($request->sort)
         ->paginate($request->pagination ?? '10');
 
