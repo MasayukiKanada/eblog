@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\ResetPasswordNotification;
 
 class Admin extends Authenticatable
 {
@@ -41,5 +42,11 @@ class Admin extends Authenticatable
     public function post()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $url = url("reset-password/${token}");
+        $this->notify(new ResetPasswordNotification($url));
     }
 }
