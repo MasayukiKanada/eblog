@@ -1,5 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
+        <div class="font-medium mb-3">新規管理者登録</div>
         <x-slot name="logo">
             <div class="w-32">
                 <a href="/">
