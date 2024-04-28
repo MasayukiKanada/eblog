@@ -18,6 +18,13 @@
         <form method="POST" action="{{ route('admin.login') }}">
             @csrf
 
+            <!-- Test Login -->
+            <div class="mb-6 pl-3">
+                <p class="mb-1 text-gray-500 font-medium">テスト用管理者</p>
+                <p class="mb-1 text-gray-500">メールアドレス：author@author.com</p>
+                <p class="text-gray-500">パスワード：password123</p>
+            </div>
+
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('メールアドレス')" />
