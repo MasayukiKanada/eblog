@@ -29,9 +29,9 @@ Docker環境にて構築するため、下記のコマンドでファイルを�
 - php artisan storage:link
 
 ## アプリURL
-### トップ：http://localhost:18888/
-### 会員ログイン:http://localhost:18888/login
-### 管理者ログイン:http://localhost:18888/admin/login
+#### トップ：http://localhost:18888/
+#### 会員ログイン:http://localhost:18888/login
+#### 管理者ログイン:http://localhost:18888/admin/login
 ※各ログイン画面にテスト用ログイン情報を記載しています。
 
 ## アプリの機能概要
