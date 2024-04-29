@@ -156,7 +156,7 @@ class PostsController extends Controller
         ->searchKeyword($request->keyword)
         ->sortOrder($request->sort)
         ->paginate($request->pagination ?? '10');
-        $trashedPosts = $trashedPosts->sortByDesc('posted_at');
+
         return view('admin.trashed-posts.index', compact('trashedPosts'));
     }
 
