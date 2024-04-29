@@ -4,8 +4,8 @@
 Docker環境にて構築するため、下記のコマンドでファイルをダウンロードしてください。
 
 ### 任意ディレクトリ配下
-- git clone https://github.com/MasayukiKanada/eblog.git main
-- cd eblog/src
+- git clone https://github.com/MasayukiKanada/eblog.git
+- cd eblog
 - git clone https://github.com/MasayukiKanada/eblog.git src
 
 ### dockerファイル実行
