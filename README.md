@@ -6,10 +6,9 @@ Docker環境にて構築するため、下記のコマンドでファイルを�
 ### 任意ディレクトリ配下
 - git clone https://github.com/MasayukiKanada/eblog.git
 - cd eblog
-- git clone https://github.com/MasayukiKanada/eblog.git src
+- git clone -b src https://github.com/MasayukiKanada/eblog.git src
 
 ### dockerファイル実行
-- cd ../
 - docker-compose build
 - docker-compose up -d
 - docker exec -it eblog_php bash
